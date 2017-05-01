@@ -12,30 +12,31 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/pessoaInsert_editTextNome"
+            android:id="@+id/pessoa_editTextNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nome" />
 
         <EditText
-            android:id="@+id/pessoaInsert_editTextCnh"
+            android:id="@+id/pessoa_editTextCnh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="CNH" />
 
         <EditText
-            android:id="@+id/pessoaInsert_editTextCpf"
+            android:id="@+id/pessoa_editTextCpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="CPF" />
 
         <EditText
-            android:id="@+id/pessoaInsert_editTextEmail"
+            android:id="@+id/pessoa_editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email" />
 
         <Button
+            android:id="@+id/pessoa_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Adicionar"/>

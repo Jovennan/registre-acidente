@@ -8,13 +8,18 @@
     tools:context="br.edu.unipe.pos.mobile.registreacidente.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <fragment
+    <!--fragment
         android:id="@+id/insertPessoaFragmentId"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         class="br.edu.unipe.pos.mobile.registreacidente.PessoaInsertFragment"
         tools:layout="@layout/fragment_pessoa_insert">
 
-    </fragment>
+    </fragment-->
+
+    <FrameLayout
+        android:id="@+id/fragment_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </android.support.constraint.ConstraintLayout>

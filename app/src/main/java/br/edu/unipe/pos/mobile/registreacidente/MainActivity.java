@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -84,6 +86,13 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_add_pessoa) {
+            // Pega o FragmentManager
+            FragmentManager fm = getSupportFragmentManager();
+
+            // Abre uma transação e adiciona
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.add(R.id.fragment_content, new PessoaInsertFragment());
+            ft.commit();
 
         } else if (id == R.id.nav_add_veiculo) {
 
@@ -102,6 +111,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-        
+
     }
 }

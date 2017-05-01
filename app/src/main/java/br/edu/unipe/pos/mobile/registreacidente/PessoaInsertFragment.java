@@ -1,12 +1,21 @@
 package br.edu.unipe.pos.mobile.registreacidente;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.List;
+
+import br.edu.unipe.pos.mobile.registreacidente.model.Pessoa;
+import br.edu.unipe.pos.mobile.registreacidente.util.PessoaInsertUtil;
 
 
 /**
@@ -26,6 +35,8 @@ public class PessoaInsertFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private PessoaInsertUtil pessoaInsertUtil;
 
     private OnFragmentInteractionListener mListener;
 
@@ -65,6 +76,39 @@ public class PessoaInsertFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_pessoa_insert, container, false);
+        pessoaInsertUtil = new PessoaInsertUtil(view);
+
+//        Intent intent = getIntent();
+//        Pessoa editPessoa = (Pessoa) intent.getSerializableExtra("student");
+
+
+//        if (editPessoa != null){
+//            pessoaInsertUtil.buildEditPessoa(editPessoa);
+//        }
+
+        Button addButon = (Button) view.findViewById(R.id.pessoInsert_buttonId);
+        addButon.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                try{
+                    Pessoa pessoa = pessoaInsertUtil.buildPessoaForInsert();
+                    List<Pessoa> outras =  Pessoa.findWithQuery(Pessoa.class, "Select * From Pessoa WHERE cpf = ?", pessoa.getCpf());
+
+                    if(outras.contains(pessoa)){
+                        Pessoa.update(pessoa);
+                        Toast.makeText(getActivity(), "Pessoa " + pessoa.getNome() + " atualizada!", Toast.LENGTH_LONG).show();
+                    }else{
+                        pessoa.save();
+                        Toast.makeText(getActivity(), "Nova pessoa " + pessoa.getNome() + " adicionada!", Toast.LENGTH_LONG).show();
+                    }
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                    Toast.makeText(getActivity(), "Erro ao salvar pessoa " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
 
         return view;
     }
