@@ -1,6 +1,8 @@
 package br.edu.unipe.pos.mobile.registreacidente.model;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.NotNull;
+import com.orm.dsl.Unique;
 
 /**
  * Created by jovennan on 28/04/17.
@@ -8,8 +10,11 @@ import com.orm.SugarRecord;
 
 public class Pessoa  extends SugarRecord {
 
+    @NotNull
     private String nome;
+    @Unique
     private String cnh;
+    @Unique
     private String cpf;
     private String email;
 

@@ -1,5 +1,7 @@
 package br.edu.unipe.pos.mobile.registreacidente.model;
 
+import com.orm.dsl.Unique;
+
 /**
  * Created by jovennan on 28/04/17.
  */
@@ -8,6 +10,7 @@ public class Veiculo {
 
     private String marca;
     private String modelo;
+    @Unique
     private String placa;
 
     public Veiculo() {
