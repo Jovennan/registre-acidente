@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -96,10 +97,14 @@ public class PessoaInsertFragment extends Fragment {
 
                     if(outras.contains(pessoa)){
                         Pessoa.update(pessoa);
-                        Toast.makeText(getActivity(), "Pessoa " + pessoa.getNome() + " atualizada!", Toast.LENGTH_LONG).show();
+                        Snackbar.make(view, "Pessoa " + pessoa.getNome() + " atualizada!", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                        //Toast.makeText(getActivity(), "Pessoa " + pessoa.getNome() + " atualizada!", Toast.LENGTH_LONG).show();
                     }else{
                         pessoa.save();
-                        Toast.makeText(getActivity(), "Nova pessoa " + pessoa.getNome() + " adicionada!", Toast.LENGTH_LONG).show();
+                        Snackbar.make(view, "Nova pessoa " + pessoa.getNome() + " adicionada!", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                        //Toast.makeText(getActivity(), "Nova pessoa " + pessoa.getNome() + " adicionada!", Toast.LENGTH_LONG).show();
                     }
 
                 }catch(Exception e){

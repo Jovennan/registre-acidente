@@ -2,15 +2,21 @@ package br.edu.unipe.pos.mobile.registreacidente;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import br.edu.unipe.pos.mobile.registreacidente.model.Pessoa;
+
 
 /**
  * A fragment representing a list of Items.
@@ -57,10 +63,21 @@ public class PessoaFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pessoa_list, container, false);
 
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(
+                        R.id.fragment_content, new PessoaInsertFragment()).commit();
+//                Snackbar.make(view, "Açao no fragment pessoaFragment",
+//                        Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            }
+        });
+
         // Set the adapter
-        if (view instanceof RecyclerView) {
+        if (view.findViewById(R.id.content_pessoa_list) instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.content_pessoa_list);
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
@@ -69,6 +86,15 @@ public class PessoaFragment extends Fragment {
             recyclerView.setAdapter(new MyPessoaRecyclerViewAdapter(Pessoa.find(Pessoa.class, "nome != ?", ""), mListener));
         }
         return view;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.itemMenuAddPessoa:
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_content, new PessoaInsertFragment()).commit();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

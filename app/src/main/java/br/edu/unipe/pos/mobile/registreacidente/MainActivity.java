@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.MenuInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -26,23 +27,23 @@ import br.edu.unipe.pos.mobile.registreacidente.model.Pessoa;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, PessoaInsertFragment.OnFragmentInteractionListener, PessoaFragment.OnListFragmentInteractionListener {
 
-//    FragmentManager fm;
-//    FragmentTransaction ft;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Snackbar.make(view, "Açao no fragment "+getSupportFragmentManager().
+//                        getFragment(savedInstanceState, "fragment").getTag(),
+//                        Snackbar.LENGTH_LONG).setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-//        fm = getSupportFragmentManager();
     }
 
     @Override
@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
+//        }else if(id == R.id.itemMenuAddPessoa){
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_content, new PessoaInsertFragment()).commit();
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -99,28 +102,13 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_add_pessoa) {
-            // Pega o FragmentManager
-            //FragmentManager fm = getSupportFragmentManager();
-            //fm.popBackStack();
-            // Abre uma transação e adiciona
-            //FragmentTransaction
 
-//            ft = fm.beginTransaction();
-//            ft.add(R.id.fragment_content, new PessoaInsertFragment());
-//            ft.commit();
-            fragment = new PessoaInsertFragment();
+            fragment = new PessoaFragment();
             FragmentoSelecionado = true;
 
         } else if (id == R.id.nav_add_veiculo) {
-            //FragmentManager fm = getSupportFragmentManager();
-            //fm.popBackStack();
-            // Abre uma transação e adiciona
-            //FragmentTransaction
-//            ft = fm.beginTransaction();
-//            ft.remove(PessoaInsertFragment);
-//            ft.add(R.id.fragment_content, new PessoaFragment());
-//            ft.commit();
-            fragment = new PessoaFragment();
+
+            fragment = new PessoaInsertFragment();
             FragmentoSelecionado = true;
 
         } else if (id == R.id.nav_relatorio) {
