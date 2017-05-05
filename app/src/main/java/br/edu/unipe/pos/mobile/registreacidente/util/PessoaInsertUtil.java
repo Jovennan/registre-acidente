@@ -20,11 +20,11 @@ public class PessoaInsertUtil {
 
     private Pessoa pessoa;
 
-    public PessoaInsertUtil(View appCompatActivity) {
-        editTextnome =(EditText) appCompatActivity.findViewById(R.id.pessoaInsert_editTextNome);
-        editTextcnh = (EditText) appCompatActivity.findViewById(R.id.pessoaInsert_editTextCnh);
-        editTextcpf = (EditText) appCompatActivity.findViewById(R.id.pessoaInsert_editTextCpf);
-        editTextemail = (EditText) appCompatActivity.findViewById(R.id.pessoaInsert_editTextEmail);
+    public PessoaInsertUtil(View view) {
+        editTextnome =(EditText) view.findViewById(R.id.pessoaInsert_editTextNome);
+        editTextcnh = (EditText) view.findViewById(R.id.pessoaInsert_editTextCnh);
+        editTextcpf = (EditText) view.findViewById(R.id.pessoaInsert_editTextCpf);
+        editTextemail = (EditText) view.findViewById(R.id.pessoaInsert_editTextEmail);
 
         pessoa = new Pessoa();
     }

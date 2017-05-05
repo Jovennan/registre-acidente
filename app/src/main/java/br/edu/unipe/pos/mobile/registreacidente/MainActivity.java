@@ -1,14 +1,12 @@
 package br.edu.unipe.pos.mobile.registreacidente;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.MenuInflater;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,15 +15,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.util.List;
-
-import br.edu.unipe.pos.mobile.registreacidente.dummy.DummyContent;
 import br.edu.unipe.pos.mobile.registreacidente.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, PessoaInsertFragment.OnFragmentInteractionListener, PessoaFragment.OnListFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, PessoaInsertFragment.OnFragmentInteractionListener,
+        PessoaFragment.OnListFragmentInteractionListener, VeiculoInsertFragment.OnFragmentInteractionListener {
+//    private static final int CODE_PHOTO = 567;
+//    private String pathPhoto;
+//    private ImageView imageViewPhoto;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -33,17 +33,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Snackbar.make(view, "Açao no fragment "+getSupportFragmentManager().
-//                        getFragment(savedInstanceState, "fragment").getTag(),
-//                        Snackbar.LENGTH_LONG).setAction("Action", null).show();
-//            }
-//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -107,10 +96,8 @@ public class MainActivity extends AppCompatActivity
             FragmentoSelecionado = true;
 
         } else if (id == R.id.nav_add_veiculo) {
-
-            fragment = new PessoaInsertFragment();
+            fragment = new VeiculoInsertFragment();
             FragmentoSelecionado = true;
-
         } else if (id == R.id.nav_relatorio) {
 
         } else if (id == R.id.nav_share) {
@@ -137,4 +124,17 @@ public class MainActivity extends AppCompatActivity
     public void onListFragmentInteraction(Pessoa item) {
 
     }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        pathPhoto = getExternalFilesDir(null)+"/"+ System.currentTimeMillis()+".jpg";
+//        if(resultCode == Activity.RESULT_OK && requestCode == CODE_PHOTO){
+//            imageViewPhoto = (ImageView) findViewById((R.id.veiculoInsert_imageViewPhoto));
+//            imageViewPhoto.setScaleType(ImageView.ScaleType.FIT_XY);
+//            Bitmap bitmap = BitmapFactory.decodeFile(pathPhoto);
+//            Bitmap bitmapReduce = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
+//            imageViewPhoto.setImageBitmap(bitmapReduce);
+//            imageViewPhoto.setTag(pathPhoto);
+//        }
+//        super.onActivityResult(requestCode, resultCode, data);
+//    }
 }
