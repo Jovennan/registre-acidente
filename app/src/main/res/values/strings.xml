@@ -6,6 +6,12 @@
     <string name="usuario_nome_completo">CB Yoda</string>
     <string name="usuario_email">yoda@starwar.com</string>
     <string name="action_settings">Settings</string>
+    <string name="action_vanguarda">Vanguarda</string>
+    <string name="action_retaguarda">Retaguarda</string>
+    <string name="action_direita">Direita</string>
+    <string name="action_esquerda">Esquerda</string>
+
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

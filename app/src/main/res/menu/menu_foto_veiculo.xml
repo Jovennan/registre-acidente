@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_vanguarda"
+        android:orderInCategory="100"
+        android:title="@string/action_vanguarda"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_lateral_esquerda"
+        android:orderInCategory="100"
+        android:title="@string/action_esquerda"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_lateral_direita"
+        android:orderInCategory="100"
+        android:title="@string/action_direita"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_retaguarda"
+        android:orderInCategory="100"
+        android:title="@string/action_retaguarda"
+        app:showAsAction="never" />
+
+
+
+</menu>

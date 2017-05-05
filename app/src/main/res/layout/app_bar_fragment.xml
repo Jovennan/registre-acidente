@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context="br.edu.unipe.pos.mobile.registreacidente.PessoaFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="br.edu.unipe.pos.mobile.registreacidente.PessoaFragment">
 
 <include layout="@layout/content_pessoa_list" />
 
@@ -13,7 +14,13 @@ tools:context="br.edu.unipe.pos.mobile.registreacidente.PessoaFragment">
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:foreground="@drawable/ic_person_add_black_24px"
+        app:borderWidth="0dp"
+        app:elevation="12dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@drawable/ic_person_add_black_24px"
         android:foregroundGravity="center"
-        android:foregroundTint="@color/colorPrimary"/>
+        android:foregroundTint="#ffffff"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        />
 </android.support.design.widget.CoordinatorLayout>

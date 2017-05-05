@@ -143,9 +143,9 @@ public class VeiculoInsertFragment extends Fragment {
                     Intent intentCaptureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     pathPhoto = getActivity().getExternalFilesDir(null)+"/"+ System.currentTimeMillis()+".jpg";
                     File filePhoto = new File(pathPhoto);
-                    FotoVeiculo novaFotoVeiculo = new FotoVeiculo();
-                    novaFotoVeiculo.setCaminho(pathPhoto);
-                    novaFotoVeiculo.save();
+//                    FotoVeiculo novaFotoVeiculo = new FotoVeiculo();
+//                    novaFotoVeiculo.setCaminho(pathPhoto);
+//                    novaFotoVeiculo.save();
                     Uri photoURI = FileProvider.getUriForFile(getActivity(), getActivity().getApplicationContext().getPackageName() + ".files", filePhoto);
                     intentCaptureImage.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                     startActivityForResult(intentCaptureImage, CODE_PHOTO);
@@ -163,6 +163,7 @@ public class VeiculoInsertFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == Activity.RESULT_OK && requestCode == CODE_PHOTO){
+
             Toast.makeText(getContext(), "entrou no onActivityResult", Toast.LENGTH_SHORT).show();
             try{
                 imageViewPhoto = (ImageView) getActivity().findViewById((R.id.veiculoInsert_imageViewPhoto));
@@ -171,6 +172,9 @@ public class VeiculoInsertFragment extends Fragment {
                 Bitmap bitmapReduce = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
                 imageViewPhoto.setImageBitmap(bitmapReduce);
                 imageViewPhoto.setTag(pathPhoto);
+                FotoVeiculo novaFotoVeiculo = new FotoVeiculo();
+                novaFotoVeiculo.setCaminho(pathPhoto);
+                novaFotoVeiculo.save();
 
             }catch (Exception ex){
                 ex.printStackTrace();
